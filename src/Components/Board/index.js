@@ -1,26 +1,26 @@
 import {useState, useEffect} from "react";
 import styles from  "./index.module.css";
 import Square from "../Square";
+import Modal from "../Modal/index.jsx"
 
 
 export default function Board(){
-    const [game, setGame] = useState("on");
+    const [game, setGame] = useState("off");
     const [face, setFace] = useState("");
     const [boardArray, setBoardArray] = useState([0,1,2,3,4,5,6,7,8]);
+    const [winner, setWinner] = useState("");
+    const [show, setShow] = useState(true);
 
-    /* 
-    WIN conditions:
-
-    if 0-1-2 are the same - DONE
-    if 0-3-6 are the same - DONE
-    if 0-4-8 - DONE
-    if 3-4-5 - DONE 
-    if 6-7-8 - DONE 
-    if 1-4-7 - DONE 
-    if 2-5-8 - DONE 
-    if 6-4-2
-
-    */
+    const showModal = () => {
+        setShow(true);
+        console.log(show)
+      }
+    
+      const hideModal = () => {
+        setShow(false);
+        console.log(show)
+      }
+    
 
     const determineWinner = () => {
         // Squares 0 - 1 - 2 result 
@@ -29,7 +29,7 @@ export default function Board(){
             (boardArray[0] === "drago" && boardArray[1] === "drago" && boardArray[2] === "drago")
             ) {
                 console.log(`${boardArray[0]} wins!`)
-
+                setWinner(boardArray[0]);
             } else if (
 
                 // Squares 0 - 3 - 6 result 
@@ -37,6 +37,7 @@ export default function Board(){
                 (boardArray[0] === "drago" && boardArray[3] === "drago" && boardArray[6] === "drago")
             ) {
                 console.log(`${boardArray[0]} wins!`)
+                setWinner(boardArray[0]);
             } else if (
 
                  // Squares 0 - 4 - 8 result  
@@ -44,6 +45,7 @@ export default function Board(){
                 (boardArray[0] === "drago" && boardArray[4] === "drago" && boardArray[8] === "drago")
             ) {
                 console.log(`${boardArray[0]} wins!`)
+                setWinner(boardArray[0]);
             } else if (
 
                  // Squares 3 - 4 - 5 result  
@@ -51,6 +53,7 @@ export default function Board(){
                 (boardArray[3] === "drago" && boardArray[4] === "drago" && boardArray[5] === "drago")
             ) {
                 console.log(`${boardArray[3]} wins!`)
+                setWinner(boardArray[3]);
             } else if (
 
                  // Squares 6 - 7 - 8 result  
@@ -58,6 +61,7 @@ export default function Board(){
                 (boardArray[6] === "drago" && boardArray[7] === "drago" && boardArray[8] === "drago")
             ) {
                 console.log(`${boardArray[6]} wins!`)
+                setWinner(boardArray[6]);
             } else if (
 
                   // Squares 1 - 4 - 7 result  
@@ -65,6 +69,7 @@ export default function Board(){
                 (boardArray[1] === "drago" && boardArray[4] === "drago" && boardArray[7] === "drago")
             ) {
                 console.log(`${boardArray[1]} wins!`)
+                setWinner(boardArray[1]);
             } else if (
                 
                    // Squares 2 - 5 - 8 result
@@ -72,6 +77,7 @@ export default function Board(){
                 (boardArray[2] === "drago" && boardArray[5] === "drago" && boardArray[8] === "drago")
             ) {
                 console.log(`${boardArray[2]} wins!`)
+                setWinner(boardArray[2]);
             } else if (
 
                    // Squares 6 - 4 - 2 result
@@ -79,6 +85,7 @@ export default function Board(){
                 (boardArray[6] === "drago" && boardArray[4] === "drago" && boardArray[2] === "drago")
             ) {
                 console.log(`${boardArray[6]} wins!`)
+                setWinner(boardArray[6]);
             }
     }
 
@@ -86,9 +93,10 @@ export default function Board(){
         determineWinner();
     }, [boardArray]);
     
-
+    console.log(winner);
 
     return (
+        <>
         <section id="board" className={styles.board}>
            {
                new Array(9).fill(0).map((e, index) => {
@@ -98,5 +106,7 @@ export default function Board(){
                })
            } 
         </section>
+        <Modal handleClose={hideModal} show={show} />
+        </>
     )
 }
