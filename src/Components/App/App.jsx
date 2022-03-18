@@ -6,9 +6,6 @@ import {useState} from "react";
 
 
 function App() {
-const [game, setGame] = useState(false);
-
-const [imgUrl, setImageUrl] = useState()
 
   return (
     <div className={styles.App}>
