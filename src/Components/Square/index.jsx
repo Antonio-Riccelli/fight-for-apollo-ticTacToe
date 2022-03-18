@@ -49,8 +49,8 @@ const [faceSet, setFaceSet] = useState("");
     return (
         <div className={styles.square} onClick={handleSquareClick} style={{backgroundImage: `url(${background})`, 
         backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "cover"}} value={faceSet} id={id}>
-            {id}
-            <p><b>{faceSet}</b></p>
+            {/* {id}
+            <p><b>{faceSet}</b></p> */}
         </div>
     )
     }
