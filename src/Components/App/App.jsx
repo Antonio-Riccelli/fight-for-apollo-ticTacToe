@@ -7,24 +7,13 @@ import {useState} from "react";
 
 
 function App() {
-  const [show, setShow] = useState(false);
 
-  const showModal = () => {
-    setShow(true);
-    console.log(show)
-  }
 
-  const hideModal = () => {
-    setShow(false);
-    console.log(show)
-  }
-
+ 
   return (
     <div className={styles.App}>
      <Header />
-     <Board>
-     <Modal handleClose={hideModal} show={show} />
-     </Board>
+     <Board />
     </div>
   );
 }
