@@ -25,7 +25,7 @@ export default function Board() {
     const [winner, setWinner] = useState("");
     const [show, setShow] = useState(true);
 
-    const handleSquareClick = (e) => {
+    const handleSquareClick = (e, int) => {
       
         if (e.target.getAttribute("clicked") === "true") {
             return
@@ -93,13 +93,35 @@ export default function Board() {
 
     const computerTurn = () => {
         // GET FREE SQUARES
-        const freeSquares = boardArray.filter(square => typeof square === "number");
-        console.log("Free squares: ", freeSquares);
-        let pickedSquare;
-        while (!pickedSquare) {
-            pickedSquare = getRandomIntInclusive(freeSquares[0], freeSquares[freeSquares.length - 1]);
+        const freeSquares = boardArray.filter(square => !square.clicked);
+        if (!freeSquares.length) {
+            return
         }
+        console.log("Free squares: ", freeSquares);
+        // CREATE RANDOM INTEGER
+        const randomInteger = getRandomIntInclusive(freeSquares[0].index, freeSquares[freeSquares.length - 1].index)
+        // PICK AN AVAILABLE SQUARE FROM THE FREESQUARES ARRAY
+        let pickedSquare = freeSquares[randomInteger] ? freeSquares[randomInteger] : "Couldn't find";
+        // IF INTEGER IS NOT INCLUDED IN FREESQUARES ARRAY, KEEP GENERATING INTEGER UNTIL IT IS
         console.log("Picked square: ", pickedSquare);
+          // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
+          const updatedObj = { "index": pickedSquare.index, "background": "https://i.ibb.co/pXntp2K/drago.jpg", "faceSet": "drago", "clicked": true }
+          console.log("Updated object", updatedObj);
+          // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
+          setFace("stallone")
+          // UPDATED ARRAY TO SET THE STATE WITH
+          const updatedBoardArray = boardArray.map(el => {
+              if (String(el.index) === String(updatedObj.index)) {
+                  return updatedObj;
+              } else {
+                  return el;
+              }
+          })
+          console.log("updatedBoard",updatedBoardArray)
+          setBoardArray(updatedBoardArray);
+          // CHANGING TURN TO COMPUTER'S
+          setTurn("player")
+          console.log(boardArray)
     }
 
     const determineWinner = () => {
@@ -173,15 +195,14 @@ export default function Board() {
         determineWinner();
     }, [boardArray]);
 
-    // useEffect(() => {
-    //     if (boardArray.every(el => typeof el === "number")) {
-    //         return
-    //     }
-    //     if (game) {
-    //         console.log("A move was made")
-    //         computerTurn();
-    //     }
-    // }, [turn]);
+    useEffect(() => {
+        if (game && turn === "computer") {
+            const computerResult = setTimeout(() => {
+                computerTurn();
+            }, 1000);
+            return () => clearTimeout(computerResult);
+    }
+    }, [turn]);
 
 
     return (
