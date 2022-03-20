@@ -24,6 +24,7 @@ export default function Board() {
     ]);
     const [winner, setWinner] = useState("");
     const [show, setShow] = useState(true);
+    const [modalBackground, setModalBackground] = useState("https://i.ibb.co/TLzhT4v/Screenshot-2022-03-19-140916.jpg")
 
     const handleSquareClick = (e, int) => {
       
@@ -99,9 +100,15 @@ export default function Board() {
         }
         console.log("Free squares: ", freeSquares);
         // CREATE RANDOM INTEGER
-        const randomInteger = getRandomIntInclusive(freeSquares[0].index, freeSquares[freeSquares.length - 1].index)
+        const randomInteger = getRandomIntInclusive(0, freeSquares.length - 1)
+        console.log("Random integer", randomInteger);
         // PICK AN AVAILABLE SQUARE FROM THE FREESQUARES ARRAY
-        let pickedSquare = freeSquares[randomInteger] ? freeSquares[randomInteger] : "Couldn't find";
+        let pickedSquare = freeSquares[randomInteger] ? freeSquares[randomInteger] : null;
+        // if (!pickedSquare) {
+        //     while (!pickedSquare) {
+
+        //     }
+        // }
         // IF INTEGER IS NOT INCLUDED IN FREESQUARES ARRAY, KEEP GENERATING INTEGER UNTIL IT IS
         console.log("Picked square: ", pickedSquare);
           // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
@@ -125,69 +132,126 @@ export default function Board() {
     }
 
     const determineWinner = () => {
+       
         // Squares 0 - 1 - 2 result 
         if (
-            (boardArray[0] === "stallone" && boardArray[1] === "stallone" && boardArray[2] === "stallone") ||
-            (boardArray[0] === "drago" && boardArray[1] === "drago" && boardArray[2] === "drago")
+            (boardArray[0].faceSet === "stallone" && boardArray[1].faceSet === "stallone" && boardArray[2].faceSet === "stallone") ||
+            (boardArray[0].faceSet === "drago" && boardArray[1].faceSet === "drago" && boardArray[2].faceSet === "drago")
         ) {
-            console.log(`${boardArray[0]} wins!`)
-            setWinner(boardArray[0]);
+            
+            setWinner(boardArray[0].faceSet);
+            console.log(winner, "wins");
+            if (boardArray[0].faceSet === "stallone") {
+                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+            } else {
+                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+            }
+            console.log("updated modal", modalBackground);
+            showModal();
         } else if (
 
             // Squares 0 - 3 - 6 result 
-            (boardArray[0] === "stallone" && boardArray[3] === "stallone" && boardArray[6] === "stallone") ||
-            (boardArray[0] === "drago" && boardArray[3] === "drago" && boardArray[6] === "drago")
+            (boardArray[0].faceSet === "stallone" && boardArray[3].faceSet === "stallone" && boardArray[6].faceSet === "stallone") ||
+            (boardArray[0].faceSet === "drago" && boardArray[3].faceSet === "drago" && boardArray[6].faceSet === "drago")
         ) {
-            console.log(`${boardArray[0]} wins!`)
-            setWinner(boardArray[0]);
+            console.log(`${boardArray[0].faceSet} wins!`)
+            setWinner(boardArray[0].faceSet);
+            if (boardArray[0].faceSet === "stallone") {
+                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+            } else {
+                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+            }
+            showModal();
         } else if (
 
             // Squares 0 - 4 - 8 result  
-            (boardArray[0] === "stallone" && boardArray[4] === "stallone" && boardArray[8] === "stallone") ||
-            (boardArray[0] === "drago" && boardArray[4] === "drago" && boardArray[8] === "drago")
+            (boardArray[0].faceSet === "stallone" && boardArray[4].faceSet === "stallone" && boardArray[8].faceSet === "stallone") ||
+            (boardArray[0].faceSet === "drago" && boardArray[4].faceSet === "drago" && boardArray[8].faceSet === "drago")
         ) {
-            console.log(`${boardArray[0]} wins!`)
-            setWinner(boardArray[0]);
+            console.log(`${boardArray[0].faceSet} wins!`)
+            setWinner(boardArray[0].faceSet);
+            if (boardArray[0].faceSet === "stallone") {
+                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+            } else {
+                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+            }
+            showModal();
         } else if (
 
             // Squares 3 - 4 - 5 result  
-            (boardArray[3] === "stallone" && boardArray[4] === "stallone" && boardArray[5] === "stallone") ||
-            (boardArray[3] === "drago" && boardArray[4] === "drago" && boardArray[5] === "drago")
+            (boardArray[3].faceSet === "stallone" && boardArray[4].faceSet === "stallone" && boardArray[5].faceSet === "stallone") ||
+            (boardArray[3].faceSet === "drago" && boardArray[4].faceSet === "drago" && boardArray[5].faceSet === "drago")
         ) {
-            console.log(`${boardArray[3]} wins!`)
-            setWinner(boardArray[3]);
+            console.log(`${boardArray[3].faceSet} wins!`)
+            setWinner(boardArray[3].faceSet);
+            if (boardArray[3].faceSet === "stallone") {
+                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+            } else {
+                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+            }
+            showModal();
         } else if (
 
             // Squares 6 - 7 - 8 result  
-            (boardArray[6] === "stallone" && boardArray[7] === "stallone" && boardArray[8] === "stallone") ||
-            (boardArray[6] === "drago" && boardArray[7] === "drago" && boardArray[8] === "drago")
+            (boardArray[6].faceSet === "stallone" && boardArray[7].faceSet === "stallone" && boardArray[8].faceSet === "stallone") ||
+            (boardArray[6].faceSet === "drago" && boardArray[7].faceSet === "drago" && boardArray[8].faceSet === "drago")
         ) {
-            console.log(`${boardArray[6]} wins!`)
-            setWinner(boardArray[6]);
+            console.log(`${boardArray[6].faceSet} wins!`)
+            setWinner(boardArray[6].faceSet);
+            if (boardArray[6].faceSet === "stallone") {
+                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+            } else {
+                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+            }
+            showModal();
         } else if (
 
             // Squares 1 - 4 - 7 result  
-            (boardArray[1] === "stallone" && boardArray[4] === "stallone" && boardArray[7] === "stallone") ||
-            (boardArray[1] === "drago" && boardArray[4] === "drago" && boardArray[7] === "drago")
+            (boardArray[1].faceSet === "stallone" && boardArray[4].faceSet === "stallone" && boardArray[7].faceSet === "stallone") ||
+            (boardArray[1].faceSet === "drago" && boardArray[4].faceSet === "drago" && boardArray[7].faceSet === "drago")
         ) {
-            console.log(`${boardArray[1]} wins!`)
-            setWinner(boardArray[1]);
+            console.log(`${boardArray[1].faceSet} wins!`)
+            setWinner(boardArray[1].faceSet);
+            if (boardArray[1].faceSet === "stallone") {
+                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+            } else {
+                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+            }
+            showModal();
         } else if (
 
             // Squares 2 - 5 - 8 result
-            (boardArray[2] === "stallone" && boardArray[5] === "stallone" && boardArray[8] === "stallone") ||
-            (boardArray[2] === "drago" && boardArray[5] === "drago" && boardArray[8] === "drago")
+            (boardArray[2].faceSet === "stallone" && boardArray[5].faceSet === "stallone" && boardArray[8].faceSet === "stallone") ||
+            (boardArray[2].faceSet === "drago" && boardArray[5].faceSet === "drago" && boardArray[8].faceSet === "drago")
         ) {
-            console.log(`${boardArray[2]} wins!`)
-            setWinner(boardArray[2]);
+            console.log(`${boardArray[2].faceSet} wins!`)
+            setWinner(boardArray[2].faceSet);
+            if (boardArray[2].faceSet === "stallone") {
+                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+            } else {
+                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+            }
+            showModal();
         } else if (
 
             // Squares 6 - 4 - 2 result
-            (boardArray[6] === "stallone" && boardArray[4] === "stallone" && boardArray[2] === "stallone") ||
-            (boardArray[6] === "drago" && boardArray[4] === "drago" && boardArray[2] === "drago")
+            (boardArray[6].faceSet === "stallone" && boardArray[4].faceSet === "stallone" && boardArray[2].faceSet === "stallone") ||
+            (boardArray[6].faceSet === "drago" && boardArray[4].faceSet === "drago" && boardArray[2].faceSet === "drago")
         ) {
-            console.log(`${boardArray[6]} wins!`)
-            setWinner(boardArray[6]);
+            console.log(`${boardArray[6].faceSet} wins!`)
+            setWinner(boardArray[6].faceSet);
+            if (boardArray[6].faceSet === "stallone") {
+                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+            } else {
+                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+            }
+            showModal();
+        } else if (boardArray.every(square => square.clicked)) {
+            console.log("it's a draw");
+            setWinner("draw");
+            
+            setModalBackground("https://i.ibb.co/Hq8CLBm/draw.jpg");
+            showModal();
         }
     }
 
@@ -196,7 +260,7 @@ export default function Board() {
     }, [boardArray]);
 
     useEffect(() => {
-        if (game && turn === "computer") {
+        if (game && turn === "computer" && !winner) {
             const computerResult = setTimeout(() => {
                 computerTurn();
             }, 1000);
@@ -216,7 +280,7 @@ export default function Board() {
                     })
                 }
             </section>
-            <Modal handleClose={hideModal} show={show} game={game} winner={winner} />
+            <Modal handleClose={hideModal} show={show} game={game} winner={winner} modalBackground={modalBackground}/>
         </>
     )
 }
