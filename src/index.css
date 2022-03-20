@@ -2,7 +2,12 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: black;
+  /* background-color: black; */
+   background: url(https://i.ibb.co/k5ZsrtZ/Screenshot-2022-03-20-092007.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover; 
+   -moz-background-size: cover;
+    -o-background-size: cover; 
+   background-size: cover; 
 }
 
 *,
