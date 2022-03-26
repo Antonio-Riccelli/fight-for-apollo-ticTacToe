@@ -93,3 +93,57 @@
       top: 72%;
     }
   }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    .modal {
+      width: 600px;
+      height: 600px;
+      background:no-repeat center center fixed  !important  ; 
+      -webkit-background-size: cover !important;
+      -moz-background-size: cover !important;
+      -o-background-size: cover !important;
+      background-size: cover !important;
+    }
+
+    .modal-main {
+      width: 750px;
+      height: 600px;
+      background-size: 100% 100% !important;
+    }
+
+    .fightButton {
+      top: 80%;
+      width: 280px;
+      height: 150px;
+      font-size: 4.5rem;
+    }
+
+    .fightButton:hover {
+      box-shadow: 2px 2px 5px 5px black;
+      font-size: 4.6rem;
+      color: red;
+    }
+
+    .fightButton:active {
+      top: 83%;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .fightButton {
+      top: 80%;
+      width: 310px;
+      height: 150px;
+      font-size: 4.5rem;
+    }
+
+    .fightButton:hover {
+      box-shadow: 2px 2px 5px 5px black;
+      font-size: 4.6rem;
+      color: red;
+    }
+
+    .fightButton:active {
+      top: 82%;
+    }
+  }
