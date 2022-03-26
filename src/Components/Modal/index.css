@@ -107,12 +107,12 @@
 
     .modal-main {
       width: 750px;
-      height: 600px;
+      height: 500px;
       background-size: 100% 100% !important;
     }
 
     .fightButton {
-      top: 80%;
+      top: 77%;
       width: 280px;
       height: 150px;
       font-size: 4.5rem;
@@ -125,7 +125,7 @@
     }
 
     .fightButton:active {
-      top: 83%;
+      top: 80%;
     }
   }
 
