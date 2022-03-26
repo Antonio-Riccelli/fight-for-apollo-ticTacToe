@@ -35,7 +35,10 @@ export default function Board() {
     ]);
     const [winner, setWinner] = useState("");
     const [show, setShow] = useState(true);
-    const [modalBackground, setModalBackground] = useState("https://i.ibb.co/TLzhT4v/Screenshot-2022-03-19-140916.jpg")
+    const [modalBackground, setModalBackground] = useState("https://i.ibb.co/TLzhT4v/Screenshot-2022-03-19-140916.jpg");
+    const [clickable, setClickable] = useState(true);
+    const boardClass = clickable ? `${styles.board}` : `${styles["board-no-pointer-events"]}`;
+    console.log("Boardclass", boardClass);
 
     const handleSquareClick = (e, int) => {
       
@@ -44,6 +47,7 @@ export default function Board() {
         }
        
         if (!face || face === "stallone") {
+            setClickable(false);
             // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
             const updatedObj = { "index": e.target.id, "background": "https://i.ibb.co/F8jDQKP/stallone.png", "faceSet": "stallone", "clicked": true }
             // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
@@ -65,6 +69,7 @@ export default function Board() {
         }
 
         } else if (face === "drago") {
+         
             // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
             const updatedObj = { "index": e.target.id, "background": "https://i.ibb.co/pXntp2K/drago.jpg", "faceSet": "drago", "clicked": true }
             // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
@@ -82,6 +87,7 @@ export default function Board() {
             if (!winner) {
             setTurn("player")
         }
+        
         }
 
     }
@@ -102,6 +108,7 @@ export default function Board() {
             setFace("");
             setBoardArray(startingBoard);
             setModalBackground("https://i.ibb.co/TLzhT4v/Screenshot-2022-03-19-140916.jpg");
+            setClickable(true);
         }
     }
 
@@ -120,6 +127,7 @@ export default function Board() {
         if (!freeSquares.length) {
             return
         }
+        setClickable(false)
         // console.log("Free squares: ", freeSquares);
         // CREATE RANDOM INTEGER
         const randomInteger = getRandomIntInclusive(0, freeSquares.length - 1)
@@ -150,6 +158,7 @@ export default function Board() {
           setBoardArray(updatedBoardArray);
           // CHANGING TURN TO COMPUTER'S
           setTurn("player")
+          setClickable(true)
         //   console.log(boardArray)
     }
 
@@ -314,10 +323,11 @@ export default function Board() {
     }
     }, [turn]);
 
+ 
 
     return (
         <>
-            <section id="board" className={styles.board}>
+            <section id="board" className={boardClass}>
                 {
                     boardArray.map(e => {
                         return (
