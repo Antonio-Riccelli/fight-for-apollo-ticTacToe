@@ -36,7 +36,7 @@
 
 
 /* MEDIA QUERIES */
-
+/* 
 @media (max-width: 767px) {
     .board {
         grid-template-rows: 150px 150px 150px;
@@ -58,5 +58,6 @@
         grid-template-rows: 245px 245px 245px;
         height: auto;
         /* margin: 0; */
-    }
+    /* }
 }
+ */

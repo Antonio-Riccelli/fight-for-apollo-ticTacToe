@@ -40,6 +40,7 @@ export default function Board() {
     const boardClass = clickable ? `${styles.board}` : `${styles["board-no-pointer-events"]}`;
     console.log("Boardclass", boardClass);
 
+    // FUNCTION THAT HANDLES WHAT HAPPENS WHEN A SQUARE IS CLICKED
     const handleSquareClick = (e, int) => {
       
         if (e.target.getAttribute("clicked") === "true") {
@@ -124,14 +125,45 @@ export default function Board() {
         }
         // GET FREE SQUARES
         const freeSquares = boardArray.filter(square => !square.clicked);
+
+        // GET ALL FREESQUARES INDICES 
+        const indices = freeSquares.map(obj => obj.index);
+        console.log("Indices", indices);
+
         if (!freeSquares.length) {
             return
         }
         setClickable(false)
-        // console.log("Free squares: ", freeSquares);
+        console.log("Free squares: ", freeSquares);
         // CREATE RANDOM INTEGER
-        const randomInteger = getRandomIntInclusive(0, freeSquares.length - 1)
-        // console.log("Random integer", randomInteger);
+        let randomInteger = getRandomIntInclusive(0, freeSquares.length - 1)
+        if (!indices.includes(0) && !indices.includes(3) && indices.includes(6)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 6)
+            console.log("The new random integer found is", randomInteger);
+        } else if (!indices.includes(0) && !indices.includes(1) && indices.includes(2)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 2);
+            console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
+        } else if (!indices.includes(0) && !indices.includes(4) && indices.includes(8)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 8);
+            console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
+        } else if (!indices.includes(3) && !indices.includes(4) && indices.includes(5)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 5);
+            console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
+        } else if (!indices.includes(6) && !indices.includes(7) && indices.includes(8)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 8);
+            console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
+        } else if (!indices.includes(1) && !indices.includes(4) && indices.includes(7)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 7);
+            console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
+        } else if (!indices.includes(2) && !indices.includes(5) && indices.includes(8)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 8);
+            console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
+        } else if (!indices.includes(1) && !indices.includes(2) && indices.includes(0)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 0);
+            console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
+        }
+
+
         // PICK AN AVAILABLE SQUARE FROM THE FREESQUARES ARRAY
         let pickedSquare = freeSquares[randomInteger] ? freeSquares[randomInteger] : null;
         // if (!pickedSquare) {
