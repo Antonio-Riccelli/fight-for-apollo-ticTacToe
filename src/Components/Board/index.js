@@ -9,29 +9,29 @@ import Modal from "../Modal/index.jsx"
 
 export default function Board() {
     const startingBoard = [
-        { index: 0, background: "", faceSet: "", clicked: false },
-        { index: 1, background: "", faceSet: "", clicked: false },
-        { index: 2, background: "", faceSet: "", clicked: false },
-        { index: 3, background: "", faceSet: "", clicked: false },
-        { index: 4, background: "", faceSet: "", clicked: false },
-        { index: 5, background: "", faceSet: "", clicked: false },
-        { index: 6, background: "", faceSet: "", clicked: false },
-        { index: 7, background: "", faceSet: "", clicked: false },
-        { index: 8, background: "", faceSet: "", clicked: false }
+        { index: 0, background: "", faceSet: "", clicked: false, clickedBy: "" },
+        { index: 1, background: "", faceSet: "", clicked: false, clickedBy: ""  },
+        { index: 2, background: "", faceSet: "", clicked: false , clickedBy: ""  },
+        { index: 3, background: "", faceSet: "", clicked: false , clickedBy: ""  },
+        { index: 4, background: "", faceSet: "", clicked: false , clickedBy: ""  },
+        { index: 5, background: "", faceSet: "", clicked: false, clickedBy: ""   },
+        { index: 6, background: "", faceSet: "", clicked: false, clickedBy: ""   },
+        { index: 7, background: "", faceSet: "", clicked: false, clickedBy: ""   },
+        { index: 8, background: "", faceSet: "", clicked: false , clickedBy: ""  }
     ]
     const [game, setGame] = useState(false);
     const [turn, setTurn] = useState("");
     const [face, setFace] = useState("");
     const [boardArray, setBoardArray] = useState([
-        { index: 0, background: "", faceSet: "", clicked: false },
-        { index: 1, background: "", faceSet: "", clicked: false },
-        { index: 2, background: "", faceSet: "", clicked: false },
-        { index: 3, background: "", faceSet: "", clicked: false },
-        { index: 4, background: "", faceSet: "", clicked: false },
-        { index: 5, background: "", faceSet: "", clicked: false },
-        { index: 6, background: "", faceSet: "", clicked: false },
-        { index: 7, background: "", faceSet: "", clicked: false },
-        { index: 8, background: "", faceSet: "", clicked: false }
+        { index: 0, background: "", faceSet: "", clicked: false , clickedBy: ""  },
+        { index: 1, background: "", faceSet: "", clicked: false , clickedBy: ""  },
+        { index: 2, background: "", faceSet: "", clicked: false, clickedBy: ""   },
+        { index: 3, background: "", faceSet: "", clicked: false , clickedBy: ""  },
+        { index: 4, background: "", faceSet: "", clicked: false , clickedBy: ""  },
+        { index: 5, background: "", faceSet: "", clicked: false , clickedBy: ""  },
+        { index: 6, background: "", faceSet: "", clicked: false , clickedBy: ""  },
+        { index: 7, background: "", faceSet: "", clicked: false, clickedBy: ""   },
+        { index: 8, background: "", faceSet: "", clicked: false , clickedBy: ""  }
     ]);
     const [winner, setWinner] = useState("");
     const [show, setShow] = useState(true);
@@ -50,7 +50,7 @@ export default function Board() {
         if (!face || face === "stallone") {
             setClickable(false);
             // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
-            const updatedObj = { "index": e.target.id, "background": "https://i.ibb.co/F8jDQKP/stallone.png", "faceSet": "stallone", "clicked": true }
+            const updatedObj = { "index": e.target.id, "background": "https://i.ibb.co/F8jDQKP/stallone.png", "faceSet": "stallone", "clicked": true, clickedBy: "player" }
             // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
             setFace("drago")
             // UPDATED ARRAY TO SET THE STATE WITH
@@ -72,7 +72,7 @@ export default function Board() {
         } else if (face === "drago") {
          
             // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
-            const updatedObj = { "index": e.target.id, "background": "https://i.ibb.co/pXntp2K/drago.jpg", "faceSet": "drago", "clicked": true }
+            const updatedObj = { "index": e.target.id, "background": "https://i.ibb.co/pXntp2K/drago.jpg", "faceSet": "drago", "clicked": true, clickedBy: "computer" }
             // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
             setFace("stallone")
             // UPDATED ARRAY TO SET THE STATE WITH
@@ -101,7 +101,7 @@ export default function Board() {
 
     const hideModal = () => {
         setShow(false);
-        // console.log(show)
+        console.log(show)
         if (!game) {
             setGame(true);
             setTurn("player");
@@ -136,6 +136,7 @@ export default function Board() {
         setClickable(false)
         console.log("Free squares: ", freeSquares);
         // CREATE RANDOM INTEGER
+        // let randomInteger;
         let randomInteger = getRandomIntInclusive(0, freeSquares.length - 1)
         if (!indices.includes(0) && !indices.includes(3) && indices.includes(6)) {
             randomInteger = freeSquares.findIndex(obj => obj.index === 6)
@@ -161,6 +162,18 @@ export default function Board() {
         } else if (!indices.includes(1) && !indices.includes(2) && indices.includes(0)) {
             randomInteger = freeSquares.findIndex(obj => obj.index === 0);
             console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
+        } else if (!indices.includes(2) && !indices.includes(4) && indices.includes(6)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 6);
+            console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
+        } else if (!indices.includes(4) && !indices.includes(5) && indices.includes(3)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 3);
+            console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
+        } else if (!indices.includes(4) && !indices.includes(8) && indices.includes(0)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 0);
+            console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
+        } else if (!indices.includes(4) && !indices.includes(7) && indices.includes(1)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 1);
+            console.log("Based on current indices", indices, "The new random integer found is", randomInteger);
         }
 
 
@@ -174,7 +187,7 @@ export default function Board() {
         // IF INTEGER IS NOT INCLUDED IN FREESQUARES ARRAY, KEEP GENERATING INTEGER UNTIL IT IS
         // console.log("Picked square: ", pickedSquare);
           // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
-          const updatedObj = { "index": pickedSquare.index, "background": "https://i.ibb.co/pXntp2K/drago.jpg", "faceSet": "drago", "clicked": true }
+          const updatedObj = { "index": pickedSquare.index, "background": "https://i.ibb.co/pXntp2K/drago.jpg", "faceSet": "drago", "clicked": true, clickedBy: "computer" }
         //   console.log("Updated object", updatedObj);
           // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
           setFace("stallone")
