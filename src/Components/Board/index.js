@@ -149,7 +149,7 @@ export default function Board() {
         setClickable(false)
         
         // CREATE RANDOM INTEGER
-        // let randomInteger;
+     
         let randomInteger;
         if (playerIndexes.includes(0) && playerIndexes.includes(3) && !playerIndexes.includes(6) && freeSquaresIndexes.includes(6)) {
             randomInteger = freeSquares.findIndex(obj => obj.index === 6)
@@ -162,6 +162,9 @@ export default function Board() {
             console.log("Based on current indices", playerIndexes, "The new random integer found is", randomInteger);
         } else if (playerIndexes.includes(3) && playerIndexes.includes(4) && !playerIndexes.includes(5)) {
             randomInteger = freeSquares.findIndex(obj => obj.index === 5);
+            console.log("Based on current indices", playerIndexes, "The new random integer found is", randomInteger);
+        } else if (playerIndexes.includes(3) && playerIndexes.includes(6) && !playerIndexes.includes(0)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 0);
             console.log("Based on current indices", playerIndexes, "The new random integer found is", randomInteger);
         } else if (playerIndexes.includes(6) && playerIndexes.includes(7) && !playerIndexes.includes(8)) {
             randomInteger = freeSquares.findIndex(obj => obj.index === 8);
@@ -186,6 +189,12 @@ export default function Board() {
             console.log("Based on current indices", playerIndexes, "The new random integer found is", randomInteger);
         } else if (playerIndexes.includes(4) && playerIndexes.includes(7) && !playerIndexes.includes(1)) {
             randomInteger = freeSquares.findIndex(obj => obj.index === 1);
+            console.log("Based on current playerIndexes", playerIndexes, "The new random integer found is", randomInteger);
+        } else if (playerIndexes.includes(5) && playerIndexes.includes(8) && !playerIndexes.includes(2)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 2);
+            console.log("Based on current playerIndexes", playerIndexes, "The new random integer found is", randomInteger);
+        } else if (playerIndexes.includes(6) && playerIndexes.includes(4) && !playerIndexes.includes(2)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 2);
             console.log("Based on current playerIndexes", playerIndexes, "The new random integer found is", randomInteger);
         } else {
             randomInteger = getRandomIntInclusive(0, freeSquares.length - 1);
