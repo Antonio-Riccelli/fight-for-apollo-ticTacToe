@@ -7,7 +7,7 @@ import Modal from "../Modal/index.jsx"
 // https://i.ibb.co/3NdY9KG/loss.jpg
 
 
-export default function Board() {
+export default function Board({score, setScore}) {
     const startingBoard = [
         { index: 0, background: "", faceSet: "", clicked: false, clickedBy: "" },
         { index: 1, background: "", faceSet: "", clicked: false, clickedBy: ""  },
@@ -262,8 +262,10 @@ export default function Board() {
             // console.log(winner, "wins");
             if (boardArray[0].faceSet === "stallone") {
                 setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setScore({...score, player: score.player + 1})
             } else {
                 setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setScore({...score, computer: score.computer + 1})
             }
             console.log("updated modal", modalBackground);
            
@@ -280,8 +282,10 @@ export default function Board() {
             setWinner(boardArray[0].faceSet);
             if (boardArray[0].faceSet === "stallone") {
                 setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setScore({...score, player: score.player + 1})
             } else {
                 setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setScore({...score, computer: score.computer + 1})
             }
             
             showModal();
@@ -297,8 +301,10 @@ export default function Board() {
             setWinner(boardArray[0].faceSet);
             if (boardArray[0].faceSet === "stallone") {
                 setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setScore({...score, player: score.player + 1})
             } else {
                 setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setScore({...score, computer: score.computer + 1})
             }
            
             showModal();
@@ -314,8 +320,10 @@ export default function Board() {
             setWinner(boardArray[3].faceSet);
             if (boardArray[3].faceSet === "stallone") {
                 setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setScore({...score, player: score.player + 1})
             } else {
                 setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setScore({...score, computer: score.computer + 1})
             }
             
             showModal();
@@ -331,8 +339,10 @@ export default function Board() {
             setWinner(boardArray[6].faceSet);
             if (boardArray[6].faceSet === "stallone") {
                 setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setScore({...score, player: score.player + 1})
             } else {
                 setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setScore({...score, computer: score.computer + 1})
             }
             
             showModal();
@@ -348,8 +358,10 @@ export default function Board() {
             setWinner(boardArray[1].faceSet);
             if (boardArray[1].faceSet === "stallone") {
                 setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setScore({...score, player: score.player + 1})
             } else {
                 setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setScore({...score, computer: score.computer + 1})
             }
            
             showModal();
@@ -365,8 +377,10 @@ export default function Board() {
             setWinner(boardArray[2].faceSet);
             if (boardArray[2].faceSet === "stallone") {
                 setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setScore({...score, player: score.player + 1})
             } else {
                 setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setScore({...score, computer: score.computer + 1})
             }
             
             showModal();
@@ -382,8 +396,10 @@ export default function Board() {
             setWinner(boardArray[6].faceSet);
             if (boardArray[6].faceSet === "stallone") {
                 setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setScore({...score, player: score.player + 1})
             } else {
                 setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setScore({...score, computer: score.computer + 1})
             }
             showModal();
         } else if (boardArray.every(square => square.clicked)) {

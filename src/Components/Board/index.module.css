@@ -9,11 +9,11 @@
     /* -webkit-background-size: cover;  */
     background-position: center;
     -moz-background-size: cover;
-     -o-background-size: cover; 
+    -o-background-size: cover;
     background-size: cover;
     /* padding: 5px; */
     margin: 0 0 5px 0;
-    
+
 }
 
 .board-no-pointer-events {
@@ -27,7 +27,7 @@
     /* -webkit-background-size: cover;  */
     background-position: center;
     -moz-background-size: cover;
-     -o-background-size: cover; 
+    -o-background-size: cover;
     background-size: cover;
     /* padding: 5px; */
     margin: 0 0 5px 0;
@@ -58,6 +58,31 @@
         grid-template-rows: 245px 245px 245px;
         height: auto;
         /* margin: 0; */
-    /* }
+/* }
 }
  */
+
+/* MEDIA QUERIES */
+
+@media (max-width: 767px) {
+    .board, .board-no-pointer-events  {
+        position: relative;
+        height: 50%;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    
+     
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    .board, .board-no-pointer-events  {
+        position: relative;
+        height: 50%;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

@@ -19,11 +19,11 @@
     .square {
         height: 190px;
     }
-}
+}*/
 
 @media (min-width: 1280px) {
     .square {
-        height: 245px;
+        width: 250px;
     }
-} */
+} 
 
