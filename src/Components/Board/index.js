@@ -162,6 +162,15 @@ export default function Board({score, setScore}) {
             console.log("Having considered player's choices, I will pick", 8)
             randomInteger = freeSquares.findIndex(obj => obj.index === 8);
             console.log("Based on current playerIndexes", playerIndexes, "The new random integer found is", randomInteger);
+        } else if (playerIndexes.includes(0) && playerIndexes.includes(2) && !playerIndexes.includes(1) && freeSquaresIndexes.includes(1)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 1);
+            console.log("Based on current playerIndexes", playerIndexes, "The new random integer found is", randomInteger);
+        } else if (playerIndexes.includes(0) && playerIndexes.includes(6) && !playerIndexes.includes(3) && freeSquaresIndexes.includes(3)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 3);
+            console.log("Based on current playerIndexes", playerIndexes, "The new random integer found is", randomInteger);
+        } else if (playerIndexes.includes(0) && playerIndexes.includes(8) && !playerIndexes.includes(4) && freeSquaresIndexes.includes(4)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 4);
+            console.log("Based on current playerIndexes", playerIndexes, "The new random integer found is", randomInteger);
         } else if (playerIndexes.includes(3) && playerIndexes.includes(4) && !playerIndexes.includes(5) && freeSquaresIndexes.includes(5)) {
             console.log("Having considered player's choices, I will pick", 5)
             randomInteger = freeSquares.findIndex(obj => obj.index === 5);
@@ -174,6 +183,9 @@ export default function Board({score, setScore}) {
             console.log("Having considered player's choices, I will pick", 8)
             randomInteger = freeSquares.findIndex(obj => obj.index === 8);
             console.log("Based on current playerIndexes", playerIndexes, "The new random integer found is", randomInteger);
+        } else if (playerIndexes.includes(6) && playerIndexes.includes(8) && !playerIndexes.includes(7) && freeSquaresIndexes.includes(7)) {
+            randomInteger = freeSquares.findIndex(obj => obj.index === 7);
+            console.log("Based on current playerIndexes", playerIndexes, "The new random integer found is", randomInteger);
         } else if (playerIndexes.includes(1) && playerIndexes.includes(4) && !playerIndexes.includes(7) && freeSquaresIndexes.includes(7)) {
             console.log("Having considered player's choices, I will pick", 7)
             randomInteger = freeSquares.findIndex(obj => obj.index === 7);
@@ -181,6 +193,10 @@ export default function Board({score, setScore}) {
         } else if (playerIndexes.includes(2) && playerIndexes.includes(5) && !playerIndexes.includes(8) && freeSquaresIndexes.includes(8)) {
             console.log("Having considered player's choices, I will pick", 8)
             randomInteger = freeSquares.findIndex(obj => obj.index === 8);
+            console.log("Based on current playerIndexes", playerIndexes, "The new random integer found is", randomInteger);
+        } else if (playerIndexes.includes(2) && playerIndexes.includes(8) && !playerIndexes.includes(5) && freeSquaresIndexes.includes(5)) {
+            console.log("Having considered player's choices, I will pick", 5)
+            randomInteger = freeSquares.findIndex(obj => obj.index === 5);
             console.log("Based on current playerIndexes", playerIndexes, "The new random integer found is", randomInteger);
         } else if (playerIndexes.includes(1) && playerIndexes.includes(2) && !playerIndexes.includes(0) && freeSquaresIndexes.includes(0)) {
             console.log("Having considered player's choices, I will pick", 0)
