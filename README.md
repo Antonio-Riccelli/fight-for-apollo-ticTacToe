@@ -42,3 +42,25 @@ Your best friend Apollo died on the ring at the hands of Ivan Drago. Defeat the 
 ## Wireframe
 
 ![wireframe](wireframe.jpg)
+
+
+## Next features to be added
+
+- [ ] **Three different levels of difficulty**
+- Easy
+      - Player always gets first move
+      - Computer picks random squares
+- Medium
+      - First move is switched at every game
+      - Computer switches between picking random squares and actively trying to defeat player
+- Hard
+      - Computer always gets first move
+      - Computer actively tries to defeat you by picking specific squares based on player's choice
+
+- [ ] **Authentication using [Passport](https://www.npmjs.com/package/passport)**
+- [ ] **Backend and Database**
+- NodeJS, ExpressJS for server
+- MongoDB/Mongoose for Database
+- Axios for API calls
+      - User scores will be stored in database and can be retrieved in personal profile section
+- [ ] **Graph of user's scores using [D3.js](https://www.npmjs.com/package/d3)**
