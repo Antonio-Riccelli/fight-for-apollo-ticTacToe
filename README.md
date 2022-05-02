@@ -1,7 +1,3 @@
-# WORK IN PROGRESS
-
---- 
-
 # Fight for Apollo (Tic Tac Toe)
 
 ![demo](./demo.gif)
@@ -38,6 +34,12 @@ Your best friend Apollo died on the ring at the hands of Ivan Drago. Defeat the 
         - Adding logic by which computer actively tries to defeat the player, rather than picking random free squares.
         - different difficulty levels
         - possibility to challenge other players
+
+- **02/05/2022**
+  - App has been made somewhat responsive. Layout changes based on screen size, but there are a few bugs here and there needing to be fixed, in addition to a general tweaking to make it look better. 
+  - Basic score system has been added. 
+  - Computer actively tries defeating the player, but I'm now working on creating three different levels of difficulty. 
+  - A MongoDB cluster for the project has been set up, backend now needs creating and setting up.
 
 ## Wireframe
 
