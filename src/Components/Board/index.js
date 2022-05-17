@@ -2,6 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./index.module.css";
 import Square from "../Square";
 import Modal from "../Modal/index.jsx"
+const loss = "https://i.ibb.co/pnp5j4f/loss.jpg";
+const victory = "https://i.ibb.co/7kkK6kw/win.jpg";
+const draw = "https://i.ibb.co/93tLXp2/draw.jpg";
 
 // https://i.ibb.co/xMjyqBn/victory.jpg
 // https://i.ibb.co/3NdY9KG/loss.jpg
@@ -277,10 +280,11 @@ export default function Board({score, setScore}) {
             setWinner(boardArray[0].faceSet);
             // console.log(winner, "wins");
             if (boardArray[0].faceSet === "stallone") {
-                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                // https://i.ibb.co/7kkK6kw/win.jpg
+                setModalBackground(victory);
                 setScore({...score, player: score.player + 1})
             } else {
-                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setModalBackground(loss);
                 setScore({...score, computer: score.computer + 1})
             }
             console.log("updated modal", modalBackground);
@@ -297,10 +301,11 @@ export default function Board({score, setScore}) {
             // console.log(`${boardArray[0].faceSet} wins!`)
             setWinner(boardArray[0].faceSet);
             if (boardArray[0].faceSet === "stallone") {
-                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setModalBackground(victory);
+
                 setScore({...score, player: score.player + 1})
             } else {
-                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setModalBackground(loss);
                 setScore({...score, computer: score.computer + 1})
             }
             
@@ -316,10 +321,11 @@ export default function Board({score, setScore}) {
             // console.log(`${boardArray[0].faceSet} wins!`)
             setWinner(boardArray[0].faceSet);
             if (boardArray[0].faceSet === "stallone") {
-                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setModalBackground(victory);
+
                 setScore({...score, player: score.player + 1})
             } else {
-                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setModalBackground(loss);
                 setScore({...score, computer: score.computer + 1})
             }
            
@@ -335,10 +341,11 @@ export default function Board({score, setScore}) {
             // console.log(`${boardArray[3].faceSet} wins!`)
             setWinner(boardArray[3].faceSet);
             if (boardArray[3].faceSet === "stallone") {
-                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setModalBackground(victory);
+
                 setScore({...score, player: score.player + 1})
             } else {
-                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setModalBackground(loss);
                 setScore({...score, computer: score.computer + 1})
             }
             
@@ -354,10 +361,11 @@ export default function Board({score, setScore}) {
             // console.log(`${boardArray[6].faceSet} wins!`)
             setWinner(boardArray[6].faceSet);
             if (boardArray[6].faceSet === "stallone") {
-                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setModalBackground(victory);
+
                 setScore({...score, player: score.player + 1})
             } else {
-                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setModalBackground(loss);
                 setScore({...score, computer: score.computer + 1})
             }
             
@@ -373,10 +381,11 @@ export default function Board({score, setScore}) {
             // console.log(`${boardArray[1].faceSet} wins!`)
             setWinner(boardArray[1].faceSet);
             if (boardArray[1].faceSet === "stallone") {
-                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setModalBackground(victory);
+
                 setScore({...score, player: score.player + 1})
             } else {
-                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setModalBackground(loss);
                 setScore({...score, computer: score.computer + 1})
             }
            
@@ -392,10 +401,11 @@ export default function Board({score, setScore}) {
             // console.log(`${boardArray[2].faceSet} wins!`)
             setWinner(boardArray[2].faceSet);
             if (boardArray[2].faceSet === "stallone") {
-                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setModalBackground(victory);
+
                 setScore({...score, player: score.player + 1})
             } else {
-                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setModalBackground(loss);
                 setScore({...score, computer: score.computer + 1})
             }
             
@@ -411,10 +421,11 @@ export default function Board({score, setScore}) {
             // console.log(`${boardArray[6].faceSet} wins!`)
             setWinner(boardArray[6].faceSet);
             if (boardArray[6].faceSet === "stallone") {
-                setModalBackground("https://i.ibb.co/558dhSQ/victory.jpg");
+                setModalBackground(victory);
+
                 setScore({...score, player: score.player + 1})
             } else {
-                setModalBackground("https://i.ibb.co/Phjzvk3/loss.jpg");
+                setModalBackground(loss);
                 setScore({...score, computer: score.computer + 1})
             }
             showModal();
@@ -423,8 +434,7 @@ export default function Board({score, setScore}) {
             setTurn("");
             // console.log("it's a draw");
             setWinner("draw");
-           
-            setModalBackground("https://i.ibb.co/Hq8CLBm/draw.jpg");
+            setModalBackground(draw);
             showModal();
         }
     }
