@@ -1,14 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import Square from "../Square";
 import Modal from "../Modal/index.jsx"
-const loss = "https://i.ibb.co/pnp5j4f/loss.jpg";
-const victory = "https://i.ibb.co/7kkK6kw/win.jpg";
-const draw = "https://i.ibb.co/93tLXp2/draw.jpg";
-
-// https://i.ibb.co/xMjyqBn/victory.jpg
-// https://i.ibb.co/3NdY9KG/loss.jpg
-
+const loss = "../../images/loss.jpg";
+const victory = "../../images/win.jpg";
+const draw = "../../images/draw.jpg";
 
 export default function Board({score, setScore}) {
     const startingBoard = [
@@ -38,10 +34,9 @@ export default function Board({score, setScore}) {
     ]);
     const [winner, setWinner] = useState("");
     const [show, setShow] = useState(true);
-    const [modalBackground, setModalBackground] = useState("https://i.ibb.co/TLzhT4v/Screenshot-2022-03-19-140916.jpg");
+    const [modalBackground, setModalBackground] = useState("../../images/fight.jpg");
     const [clickable, setClickable] = useState(true);
     const boardClass = clickable ? `${styles.board}` : `${styles["board-no-pointer-events"]}`;
-    // console.log("Boardclass", boardClass);
 
     // FUNCTION THAT HANDLES WHAT HAPPENS WHEN A SQUARE IS CLICKED
     const handleSquareClick = (e, int) => {
@@ -53,7 +48,7 @@ export default function Board({score, setScore}) {
         if (!face || face === "stallone") {
             setClickable(false);
             // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
-            const updatedObj = { "index": e.target.id, "background": "https://i.ibb.co/F8jDQKP/stallone.png", "faceSet": "stallone", "clicked": true, clickedBy: "player" }
+            const updatedObj = { "index": e.target.id, "background": "../../images/stallone.png", "faceSet": "stallone", "clicked": true, clickedBy: "player" }
             // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
             setFace("drago")
             // UPDATED ARRAY TO SET THE STATE WITH
@@ -75,7 +70,7 @@ export default function Board({score, setScore}) {
         } else if (face === "drago") {
          
             // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
-            const updatedObj = { "index": e.target.id, "background": "https://i.ibb.co/pXntp2K/drago.jpg", "faceSet": "drago", "clicked": true, clickedBy: "computer" }
+            const updatedObj = { "index": e.target.id, "background": "../../images/drago.jpg", "faceSet": "drago", "clicked": true, clickedBy: "computer" }
             // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
             setFace("stallone")
             // UPDATED ARRAY TO SET THE STATE WITH
@@ -111,7 +106,7 @@ export default function Board({score, setScore}) {
             setWinner("");
             setFace("");
             setBoardArray(startingBoard);
-            setModalBackground("https://i.ibb.co/TLzhT4v/Screenshot-2022-03-19-140916.jpg");
+            setModalBackground("../../images/fight.jpg");
             setClickable(true);
         }
     }
@@ -137,13 +132,6 @@ export default function Board({score, setScore}) {
         const freeSquaresIndexes = freeSquares.map(obj => obj.index);
         console.log("playerIndexes", playerIndexes);
         console.log("freeSquaresIndexes", freeSquaresIndexes);
-
-        // GET FREE SQUARES
-        // console.log("Board array", boardArray);
-        // const freeSquares = boardArray.filter(square => !square.clicked && !square.clickedBy === "computer");
-        // console.log("freeSquares", freeSquares);
-        // GET ALL FREESQUARES INDICES 
-        // const indices = freeSquares.map(obj => obj.index);
        
 
         if (!playerSquares.length) {
@@ -240,15 +228,11 @@ export default function Board({score, setScore}) {
 
         // PICK AN AVAILABLE SQUARE FROM THE FREESQUARES ARRAY
         let pickedSquare = freeSquares[randomInteger] ? freeSquares[randomInteger] : null;
-        // if (!pickedSquare) {
-        //     while (!pickedSquare) {
-
-        //     }
-        // }
+   
         // IF INTEGER IS NOT INCLUDED IN FREESQUARES ARRAY, KEEP GENERATING INTEGER UNTIL IT IS
         console.log("Picked square: ", pickedSquare);
           // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
-          const updatedObj = { "index": pickedSquare.index, "background": "https://i.ibb.co/pXntp2K/drago.jpg", "faceSet": "drago", "clicked": true, clickedBy: "computer" }
+          const updatedObj = { "index": pickedSquare.index, "background": "../../images/drago.jpg", "faceSet": "drago", "clicked": true, clickedBy: "computer" }
         //   console.log("Updated object", updatedObj);
           // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
           setFace("stallone")
@@ -278,9 +262,9 @@ export default function Board({score, setScore}) {
             setGame(false);
             setTurn("");
             setWinner(boardArray[0].faceSet);
-            // console.log(winner, "wins");
+       
             if (boardArray[0].faceSet === "stallone") {
-                // https://i.ibb.co/7kkK6kw/win.jpg
+               
                 setModalBackground(victory);
                 setScore({...score, player: score.player + 1})
             } else {
@@ -298,7 +282,7 @@ export default function Board({score, setScore}) {
         ) {
             setGame(false);
             setTurn("");
-            // console.log(`${boardArray[0].faceSet} wins!`)
+       
             setWinner(boardArray[0].faceSet);
             if (boardArray[0].faceSet === "stallone") {
                 setModalBackground(victory);
