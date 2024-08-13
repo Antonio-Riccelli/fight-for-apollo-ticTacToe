@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import styles from "./index.module.css";
 import Square from "../Square";
 import Modal from "../Modal/index.jsx"
-const loss = "../../images/loss.jpg";
-const victory = "../../images/win.jpg";
-const draw = "../../images/draw.jpg";
+import loss from "../../images/loss.jpg";
+import victory from "../../images/win.jpg";
+import draw from "../../images/draw.jpg";
+import fight from "../../images/fight.jpg"
+import stallone from "../../images/stallone.png"
+import drago from "../../images/drago.jpg"
 
 export default function Board({score, setScore}) {
     const startingBoard = [
@@ -34,7 +37,7 @@ export default function Board({score, setScore}) {
     ]);
     const [winner, setWinner] = useState("");
     const [show, setShow] = useState(true);
-    const [modalBackground, setModalBackground] = useState("../../images/fight.jpg");
+    const [modalBackground, setModalBackground] = useState(fight);
     const [clickable, setClickable] = useState(true);
     const boardClass = clickable ? `${styles.board}` : `${styles["board-no-pointer-events"]}`;
 
@@ -48,7 +51,7 @@ export default function Board({score, setScore}) {
         if (!face || face === "stallone") {
             setClickable(false);
             // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
-            const updatedObj = { "index": e.target.id, "background": "../../images/stallone.png", "faceSet": "stallone", "clicked": true, clickedBy: "player" }
+            const updatedObj = { "index": e.target.id, "background": stallone, "faceSet": "stallone", "clicked": true, clickedBy: "player" }
             // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
             setFace("drago")
             // UPDATED ARRAY TO SET THE STATE WITH
@@ -70,7 +73,7 @@ export default function Board({score, setScore}) {
         } else if (face === "drago") {
          
             // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
-            const updatedObj = { "index": e.target.id, "background": "../../images/drago.jpg", "faceSet": "drago", "clicked": true, clickedBy: "computer" }
+            const updatedObj = { "index": e.target.id, "background": drago, "faceSet": "drago", "clicked": true, clickedBy: "computer" }
             // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
             setFace("stallone")
             // UPDATED ARRAY TO SET THE STATE WITH
@@ -106,7 +109,7 @@ export default function Board({score, setScore}) {
             setWinner("");
             setFace("");
             setBoardArray(startingBoard);
-            setModalBackground("../../images/fight.jpg");
+            setModalBackground(fight);
             setClickable(true);
         }
     }
@@ -232,7 +235,7 @@ export default function Board({score, setScore}) {
         // IF INTEGER IS NOT INCLUDED IN FREESQUARES ARRAY, KEEP GENERATING INTEGER UNTIL IT IS
         console.log("Picked square: ", pickedSquare);
           // NEW OBJECT TO UPDATE THE ARRAY OF SQUARES WITH
-          const updatedObj = { "index": pickedSquare.index, "background": "../../images/drago.jpg", "faceSet": "drago", "clicked": true, clickedBy: "computer" }
+          const updatedObj = { "index": pickedSquare.index, "background": drago, "faceSet": "drago", "clicked": true, clickedBy: "computer" }
         //   console.log("Updated object", updatedObj);
           // TELLS THE APP WHAT THE NEXT FACE TO FILL THE SQUARE WITH IS GOING TO BE
           setFace("stallone")
